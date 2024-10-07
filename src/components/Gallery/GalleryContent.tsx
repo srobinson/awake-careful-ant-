@@ -163,6 +163,11 @@ const Gallery: React.FC = () => {
 				startProgress(); // Start navigation on page load
 				togglePause();
 			}
+			setTimeout(() => {
+				console.log("toggleControls");
+
+				toggleControls();
+			}, 1000);
 		}
 	}, [isLoading, isInitialLoad, startProgress, togglePause]);
 

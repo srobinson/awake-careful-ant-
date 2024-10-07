@@ -117,18 +117,6 @@ const Controls: React.FC<ControlsProps> = ({
 					<path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v6z" />
 				</svg>
 			</button>
-			<button
-				onClick={toggleFullscreen}
-				className={`hidden sm:block p-1.5 bg-gray-800 bg-opacity-70 rounded hover:bg-opacity-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-transparent
-        ${controlsState.isFullscreen ? "border-2 border-white" : "border-2 border-transparent"}`}
-			>
-				{/* Fullscreen icon */}
-				{controlsState.isFullscreen ? (
-					<FullscreenExitIcon />
-				) : (
-					<FullscreenIcon />
-				)}
-			</button>
 			{!controlsState.isThumbnailViewActive && (
 				<button
 					onClick={togglePause}
@@ -151,6 +139,18 @@ const Controls: React.FC<ControlsProps> = ({
 					)}
 				</button>
 			)}
+			<button
+				onClick={toggleFullscreen}
+				className={`hidden sm:block p-1.5 bg-gray-800 bg-opacity-70 rounded hover:bg-opacity-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-transparent
+        ${controlsState.isFullscreen ? "border-2 border-white" : "border-2 border-transparent"}`}
+			>
+				{/* Fullscreen icon */}
+				{controlsState.isFullscreen ? (
+					<FullscreenExitIcon />
+				) : (
+					<FullscreenIcon />
+				)}
+			</button>
 		</div>
 	);
 };
