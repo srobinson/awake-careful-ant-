@@ -1,19 +1,5 @@
 // src/utils/config.ts
 
-// export const CONFIG = {
-//   TOTAL_IMAGES: 86,
-//   PROGRESS_BAR_DURATION: 5000,
-//   MIN_DISPLAY_TIME: 500,
-//   THUMBNAIL_WIDTH: 150,
-//   THUMBNAIL_BUFFER_SIZE: 2,
-//   ITEMS_PER_PAGE: 70,
-//   TRANSITION_DURATION: 600,
-//   PRELOAD_OFFSET: 1,
-//   INITIAL_SCALE: 0.95,
-//   BACKGROUND_SCALE: 1.1,
-//   SLIDE_PERCENTAGE: 5,
-// };
-
 export const CONFIG = {
 	// Start the transitioning on page load
 	AUTO_START: false,

@@ -120,7 +120,13 @@ export const useImageManager = () => {
 			// Reset next elements
 			if (nextBackgroundRef.current && nextImageRef.current) {
 				nextBackgroundRef.current.style.backgroundImage = "none";
-				nextImageRef.current.src = "";
+				if (direction === "next") {
+					nextImageRef.current.src =
+						"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOU1WCoBwABdQDGakZHEwAAAABJRU5ErkJggg==";
+				} else {
+					nextImageRef.current.src =
+						"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPMa8irBwAEnQHdCzL1gwAAAABJRU5ErkJggg==";
+				}
 				nextImageRef.current.style.transform = "translateX(0)";
 				nextImageRef.current.style.opacity = "0";
 				nextBackgroundRef.current.style.transform = "translateX(0) scale(1)";

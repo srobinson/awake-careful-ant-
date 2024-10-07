@@ -39,6 +39,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 					ref={nextImageRef}
 					className="absolute !h-screen object-cover transition-all duration-500 ease-in-out opacity-0"
 					alt="Next gallery image"
+					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
 				/>
 			</div>
 		</>
