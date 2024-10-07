@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
 	description: "A beautiful image gallery",
-	title: "Your Gallery App",
+	title: "awake careful ant",
 };
 
 export default function RootLayout({
