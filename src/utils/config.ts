@@ -40,7 +40,7 @@ export const CONFIG = {
 	MAX_LOAD_RETRIES: 3,
 
 	// TODO: Same as TRANSITION_DURATION?
-	MIN_DISPLAY_TIME: 200,
+	MIN_DISPLAY_TIME: 600,
 
 	// Duration of the progress bar in milliseconds
 	PROGRESS_BAR_DURATION: 15000,
