@@ -62,7 +62,7 @@ export const useImageManager = () => {
 		nextImageRef.current.src = loadedImage.src;
 		nextBackgroundRef.current.style.backgroundImage = `url(${loadedImage.src})`;
 
-		const translateValue = direction === "next" ? "10%" : "-10%";
+		const translateValue = direction === "next" ? "10px" : "-10px";
 		nextImageRef.current.style.transform = `translateX(${translateValue})`;
 		nextBackgroundRef.current.style.transform = `translateX(${translateValue}) scale(1.01)`;
 		nextImageRef.current.style.opacity = "0";
@@ -82,12 +82,12 @@ export const useImageManager = () => {
 		if (!currentImageRef.current || !currentBackgroundRef.current) return;
 
 		currentImageRef.current.style.transform =
-			direction === "next" ? "translateX(-10%)" : "translateX(10%)";
+			direction === "next" ? "translateX(50px)" : "translateX(-100px)";
 		currentImageRef.current.style.opacity = "0";
 		currentBackgroundRef.current.style.transform =
 			direction === "next"
-				? "translateX(-10%) scale(1.01)"
-				: "translateX(10%) scale(1.01)";
+				? "translateX(200px) scale(1.61)"
+				: "translateX(-200px) scale(1.01)";
 		currentBackgroundRef.current.style.opacity = "0";
 	};
 
