@@ -341,6 +341,7 @@ const Gallery: React.FC = () => {
 				currentImageRef={currentImageRef}
 				nextImageRef={nextImageRef}
 				isInitialLoad={isInitialLoad}
+				currentImage={state.currentImage} // Pass the current image object
 			/>
 
 			{(error ?? dataError) && (

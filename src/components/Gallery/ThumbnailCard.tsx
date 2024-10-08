@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 interface ThumbnailCardProps {
 	image: {
@@ -23,13 +23,49 @@ const ThumbnailCard: React.FC<ThumbnailCardProps> = ({
 	isMarkedForDeletion,
 }) => {
 	const [isLoading, setIsLoading] = useState(true);
+	const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
+	const isHoldActionCompleted = useRef(false);
+
+	const handlePressStart = () => {
+		isHoldActionCompleted.current = false;
+		holdTimerRef.current = setTimeout(() => {
+			toggleMarkForDeletion();
+			isHoldActionCompleted.current = true;
+		}, 500); // 500ms threshold for "press and hold"
+	};
+
+	const handlePressEnd = () => {
+		if (holdTimerRef.current) {
+			clearTimeout(holdTimerRef.current);
+			holdTimerRef.current = null;
+		}
+	};
+
+	const handleClick = (e: React.MouseEvent) => {
+		if (isHoldActionCompleted.current) {
+			e.preventDefault();
+			e.stopPropagation();
+			return;
+		}
+		onClick();
+	};
+
+	const handleContextMenu = (e: React.MouseEvent) => {
+		e.preventDefault();
+	};
 
 	return (
 		<div
 			className={`relative aspect-[3/2] cursor-pointer transition-transform duration-200 ${
 				isSelected ? "ring-4 ring-blue-500" : ""
 			} ${isMarkedForDeletion ? "opacity-50" : ""}`}
-			onClick={onClick}
+			onMouseDown={handlePressStart}
+			onMouseUp={handlePressEnd}
+			onMouseLeave={handlePressEnd}
+			onTouchStart={handlePressStart}
+			onTouchEnd={handlePressEnd}
+			onClick={handleClick}
+			onContextMenu={handleContextMenu} // Add this line
 		>
 			{isLoading && (
 				<div className="absolute inset-0 flex items-center justify-center">

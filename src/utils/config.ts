@@ -22,6 +22,8 @@ export const CONFIG = {
 		PREV: "ArrowLeft", // Space key
 	},
 
+	MARK_CONTROLS_ENABLED: false,
+
 	// Maximum number of retries for image loading
 	MAX_LOAD_RETRIES: 3,
 

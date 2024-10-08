@@ -37,19 +37,22 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
 				<h2 className="text-2xl font-bold mb-4">Gallery Controls</h2>
 				{isMobile ? (
 					<ul className="list-disc pl-5">
-						<li>Swipe left/right: Next/previous image</li>
-						<li>Swipe up: Open thumbnail view</li>
-						<li>Swipe down: Toggle controls</li>
-						<li>Tap: Toggle controls</li>
-						<li>Double tap: Toggle fullscreen</li>
-						<li>Pinch in/out: Zoom in/out</li>
+						<li>Swipe left/right: Navigate to next/previous image</li>
+						<li>Swipe up: Open the thumbnail view</li>
+						<li>Swipe down: Hide/show controls</li>
+						<li>Tap: Toggle visibility of controls</li>
+						<li>Double tap: Enter/exit fullscreen mode</li>
+						<li>Tap and hold: Toggle mark for deletion</li>
+						<li>Pinch in/out: Zoom in/out on the image</li>
 					</ul>
 				) : (
 					<ul className="list-disc pl-5">
-						<li>Left/Right Arrow: Next/previous image</li>
-						<li>Space: Pause/resume slideshow</li>
-						<li>F: Toggle fullscreen</li>
-						<li>H: Toggle this help modal</li>
+						<li>Left/Right Arrow: Navigate to next/previous image</li>
+						<li>Space: Pause or resume the slideshow</li>
+						<li>F: Enter/exit fullscreen mode</li>
+						<li>H: Show/hide this help modal</li>
+						<li>Esc: Close the current view or modal</li>
+						<li>Click and hold: Toggle mark for deletion</li>
 					</ul>
 				)}
 				<button

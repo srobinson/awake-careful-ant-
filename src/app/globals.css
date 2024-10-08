@@ -5,6 +5,7 @@
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
+	--animation-duration: 1000;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -16,6 +16,7 @@ type GalleryState = {
 	isLoading: boolean;
 	isPaused: boolean;
 	progress: number;
+	currentImage: any | null; // Store the current image object
 };
 
 type GalleryAction =
@@ -24,7 +25,8 @@ type GalleryAction =
 	| { type: "SET_INITIAL_LOAD"; payload: boolean }
 	| { type: "SET_PAUSED"; payload: boolean }
 	| { type: "SET_PROGRESS"; payload: number }
-	| { type: "SET_ERROR"; payload: string | null };
+	| { type: "SET_ERROR"; payload: string | null }
+	| { type: "SET_CURRENT_IMAGE"; payload: any | null }; // Add this case
 
 const initialState: GalleryState = {
 	currentIndex: 0,
@@ -33,6 +35,7 @@ const initialState: GalleryState = {
 	isLoading: true,
 	isPaused: true,
 	progress: 0,
+	currentImage: null, // Initialize with null
 };
 
 const galleryReducer = (
@@ -52,6 +55,8 @@ const galleryReducer = (
 			return { ...state, progress: action.payload };
 		case "SET_ERROR":
 			return { ...state, error: action.payload };
+		case "SET_CURRENT_IMAGE": // Add this case
+			return { ...state, currentImage: action.payload };
 		default:
 			return state;
 	}

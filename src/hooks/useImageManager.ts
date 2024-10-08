@@ -2,6 +2,7 @@
 
 "use client";
 
+import { useGalleryContext } from "@/context/GalleryContext"; // Import the context
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGalleryData } from "./useGalleryData";
 
@@ -32,6 +33,7 @@ export const useImageManager = () => {
 		isLoading: isDataLoading,
 		error: dataError,
 	} = useGalleryData();
+	const { dispatch } = useGalleryContext(); // Use the context
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isInitialLoad, setIsInitialLoad] = useState(true);
@@ -143,11 +145,13 @@ export const useImageManager = () => {
 			setError(null);
 
 			const imageSrc = getImageSrc(index);
+			const currentImage = galleryData.images[index]; // Get the current image object
 
 			try {
 				const loadedImage = await loadImageWithRetry(imageSrc);
 				await transitionImage(loadedImage, direction);
 				setCurrentIndex(index);
+				dispatch({ type: "SET_CURRENT_IMAGE", payload: currentImage }); // Dispatch the current image object
 			} catch (err) {
 				console.error(`Error loading image: ${err}`);
 				setError("Failed to load image. Please try again.");
@@ -155,7 +159,7 @@ export const useImageManager = () => {
 				setIsLoading(false);
 			}
 		},
-		[galleryData, getImageSrc, transitionImage]
+		[galleryData, getImageSrc, transitionImage, dispatch] // Add dispatch to dependencies
 	);
 
 	const preloadNextImage = useCallback(

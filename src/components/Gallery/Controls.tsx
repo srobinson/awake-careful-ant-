@@ -1,6 +1,7 @@
 // src/components/Gallery/Controls.tsx
 
 import React from "react";
+import { CONFIG } from "../../utils/config";
 
 interface ControlsProps {
 	controlsState: {
@@ -72,7 +73,7 @@ const Controls: React.FC<ControlsProps> = ({
 				controlsState.isControlsVisible ? "opacity-100" : "opacity-0"
 			}`}
 		>
-			{!controlsState.isThumbnailViewActive && (
+			{CONFIG.MARK_CONTROLS_ENABLED && !controlsState.isThumbnailViewActive && (
 				<>
 					{/* New button to mark/unmark for deletion */}
 					<button
