@@ -38,12 +38,7 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
 				{isMobile ? (
 					<ul className="list-disc pl-5">
 						<li>Swipe left/right: Navigate to next/previous image</li>
-						<li>Swipe up: Open the thumbnail view</li>
-						<li>Swipe down: Hide/show controls</li>
 						<li>Tap: Toggle visibility of controls</li>
-						<li>Double tap: Enter/exit fullscreen mode</li>
-						<li>Tap and hold: Toggle mark for deletion</li>
-						<li>Pinch in/out: Zoom in/out on the image</li>
 					</ul>
 				) : (
 					<ul className="list-disc pl-5">
@@ -52,7 +47,6 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
 						<li>F: Enter/exit fullscreen mode</li>
 						<li>H: Show/hide this help modal</li>
 						<li>Esc: Close the current view or modal</li>
-						<li>Click and hold: Toggle mark for deletion</li>
 					</ul>
 				)}
 				<button

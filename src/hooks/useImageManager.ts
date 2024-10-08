@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useGalleryContext } from "@/context/GalleryContext"; // Import the context
+import { useGalleryContext } from "@/context/GalleryContext";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGalleryData } from "./useGalleryData";
 
@@ -33,7 +33,7 @@ export const useImageManager = () => {
 		isLoading: isDataLoading,
 		error: dataError,
 	} = useGalleryData();
-	const { dispatch } = useGalleryContext(); // Use the context
+	const { dispatch } = useGalleryContext();
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isInitialLoad, setIsInitialLoad] = useState(true);

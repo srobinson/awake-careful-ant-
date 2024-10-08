@@ -26,7 +26,7 @@ type GalleryAction =
 	| { type: "SET_PAUSED"; payload: boolean }
 	| { type: "SET_PROGRESS"; payload: number }
 	| { type: "SET_ERROR"; payload: string | null }
-	| { type: "SET_CURRENT_IMAGE"; payload: any | null }; // Add this case
+	| { type: "SET_CURRENT_IMAGE"; payload: any | null };
 
 const initialState: GalleryState = {
 	currentIndex: 0,

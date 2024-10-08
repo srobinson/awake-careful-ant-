@@ -4,6 +4,7 @@
 
 import { useGalleryData } from "@/hooks/useGalleryData";
 import React, { useCallback, useRef } from "react";
+import Masonry from "react-masonry-css";
 import ThumbnailCard from "./Gallery/ThumbnailCard";
 
 interface ThumbnailViewProps {
@@ -52,13 +53,24 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 
 	if (!isVisible || !galleryData) return null;
 
+	const breakpointColumnsObj = {
+		default: 5,
+		1100: 4,
+		700: 3,
+		500: 2,
+	};
+
 	return (
 		<div
 			ref={scrollRef}
 			className="fixed inset-0 bg-black bg-opacity-90 z-50 overflow-y-auto p-4"
 		>
 			<div className="container mx-auto">
-				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+				<Masonry
+					breakpointCols={breakpointColumnsObj}
+					className="my-masonry-grid"
+					columnClassName="my-masonry-grid_column"
+				>
 					{items.map((index, arrayIndex) => (
 						<div
 							key={index}
@@ -81,7 +93,7 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 							/>
 						</div>
 					))}
-				</div>
+				</Masonry>
 			</div>
 			{isLoading && (
 				<div className="text-center py-4">

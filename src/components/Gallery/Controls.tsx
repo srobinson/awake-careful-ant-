@@ -92,7 +92,7 @@ const Controls: React.FC<ControlsProps> = ({
 					</button>
 				</>
 			)}
-			{!controlsState.isThumbnailViewActive && (
+			{CONFIG.HELP_CONTROLS_ENABLED && !controlsState.isThumbnailViewActive && (
 				<button
 					onClick={toggleHelpModal}
 					className={`p-2 sm:p-1.5 bg-gray-800 bg-opacity-70 rounded hover:bg-opacity-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-transparent

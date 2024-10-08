@@ -56,8 +56,8 @@ const ThumbnailCard: React.FC<ThumbnailCardProps> = ({
 
 	return (
 		<div
-			className={`relative aspect-[3/2] cursor-pointer transition-transform duration-200 ${
-				isSelected ? "ring-4 ring-blue-500" : ""
+			className={`rounded-lg relative cursor-pointer transition-transform duration-200 ${
+				isSelected ? "ring-4 ring-lime-500" : ""
 			} ${isMarkedForDeletion ? "opacity-50" : ""}`}
 			onMouseDown={handlePressStart}
 			onMouseUp={handlePressEnd}
@@ -65,7 +65,7 @@ const ThumbnailCard: React.FC<ThumbnailCardProps> = ({
 			onTouchStart={handlePressStart}
 			onTouchEnd={handlePressEnd}
 			onClick={handleClick}
-			onContextMenu={handleContextMenu} // Add this line
+			onContextMenu={handleContextMenu}
 		>
 			{isLoading && (
 				<div className="absolute inset-0 flex items-center justify-center">
@@ -75,7 +75,7 @@ const ThumbnailCard: React.FC<ThumbnailCardProps> = ({
 			<img
 				src={`https://i.awake-careful-ant.com/optimized/320/${image.variants["320"].filename}`}
 				alt={image.comment}
-				style={{ objectFit: "cover", width: "100%", height: "100%" }}
+				style={{ objectFit: "cover", width: "100%", minHeight: "100px" }}
 				className="rounded-lg"
 				onLoad={() => setIsLoading(false)}
 			/>

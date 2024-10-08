@@ -59,7 +59,7 @@ const useThumbnails = (totalImages: number) => {
 				thumbnailItems.length + newItems.length < totalImages
 			);
 			setIsLoadingThumbnails(false);
-		}, 500); // Simulating network delay
+		}, 500);
 	}, [thumbnailItems, isLoadingThumbnails, totalImages]);
 
 	return {
@@ -160,7 +160,7 @@ const Gallery: React.FC = () => {
 		if (!isLoading && isInitialLoad) {
 			setIsInitialLoad(false);
 			if (CONFIG.AUTO_START) {
-				startProgress(); // Start navigation on page load
+				startProgress();
 				togglePause();
 			}
 			setTimeout(() => {
@@ -294,7 +294,10 @@ const Gallery: React.FC = () => {
 		(index: number) => {
 			updateImage(index, index > currentIndex ? "next" : "prev");
 			resetProgress();
-			closeThumbnailView(); // Ensure the thumbnail view is closed
+			closeThumbnailView();
+			setTimeout(() => {
+				toggleControls();
+			}, 2000);
 		},
 		[closeThumbnailView, currentIndex, updateImage, resetProgress]
 	);
@@ -324,7 +327,7 @@ const Gallery: React.FC = () => {
 	const galleryRef = useRef<HTMLDivElement>(null);
 
 	if (!isMounted) {
-		return null; // or a loading indicator
+		return null;
 	}
 
 	return (
@@ -341,7 +344,7 @@ const Gallery: React.FC = () => {
 				currentImageRef={currentImageRef}
 				nextImageRef={nextImageRef}
 				isInitialLoad={isInitialLoad}
-				currentImage={state.currentImage} // Pass the current image object
+				currentImage={state.currentImage}
 			/>
 
 			{(error ?? dataError) && (
@@ -364,7 +367,7 @@ const Gallery: React.FC = () => {
 				isPaused={state.isPaused}
 				toggleMarkForDeletion={() => toggleMarkForDeletion(currentIndex)}
 				isMarkedForDeletion={markedForDeletion.has(currentIndex)}
-				exportMarkedFiles={exportMarkedFiles} // Pass the export function
+				exportMarkedFiles={exportMarkedFiles}
 			/>
 
 			<HelpModal
@@ -380,8 +383,8 @@ const Gallery: React.FC = () => {
 				hasMore={hasMoreThumbnails}
 				isLoading={isLoadingThumbnails}
 				onLoadMore={fetchMoreThumbnails}
-				toggleMarkForDeletion={toggleMarkForDeletion} // Pass the toggle function
-				markedForDeletion={markedForDeletion} // Pass the marked set
+				toggleMarkForDeletion={toggleMarkForDeletion}
+				markedForDeletion={markedForDeletion}
 			/>
 		</div>
 	);

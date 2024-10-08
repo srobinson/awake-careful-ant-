@@ -1,8 +1,14 @@
 // src/utils/config.ts
 
+function isMobile() {
+	return typeof window !== "undefined" && window.innerWidth <= 768;
+}
+
 export const CONFIG = {
 	// Start the transitioning on page load
 	AUTO_START: false,
+
+	IS_MOBILE: isMobile(),
 
 	// Path to the background images
 	BACKGROUND_PATH: "/assets/",
@@ -19,11 +25,11 @@ export const CONFIG = {
 		HELP: "h",
 		NEXT: "ArrowRight",
 		PAUSE: " ",
-		PREV: "ArrowLeft", // Space key
+		PREV: "ArrowLeft",
 	},
 
 	MARK_CONTROLS_ENABLED: false,
-
+	HELP_CONTROLS_ENABLED: false,
 	// Maximum number of retries for image loading
 	MAX_LOAD_RETRIES: 3,
 

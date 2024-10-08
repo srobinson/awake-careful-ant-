@@ -1,4 +1,5 @@
-import React from "react";
+import { CONFIG } from "@/utils/config";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ImageDisplayProps {
 	currentBackgroundRef: React.RefObject<HTMLDivElement>;
@@ -6,7 +7,7 @@ interface ImageDisplayProps {
 	currentImageRef: React.RefObject<HTMLImageElement>;
 	nextImageRef: React.RefObject<HTMLImageElement>;
 	isInitialLoad: boolean;
-	currentImage: any | null; // Add this line
+	currentImage: any | null;
 }
 
 const ImageDisplay: React.FC<ImageDisplayProps> = ({
@@ -15,13 +16,22 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 	currentImageRef,
 	nextImageRef,
 	isInitialLoad,
-	// currentImage, // Add this line
+	currentImage,
 }) => {
-	// const [animationKey, setAnimationKey] = useState(0);
+	const [animationDuration, setAnimationDuration] = useState(15);
+	const [animationKey, setAnimationKey] = useState(0);
+	const marqueeRef = useRef<HTMLDivElement>(null);
 
-	// useEffect(() => {
-	// 	setAnimationKey(prevKey => prevKey + 1);
-	// }, [currentImage]);
+	useEffect(() => {
+		if (marqueeRef.current) {
+			const textWidth = marqueeRef.current.scrollWidth;
+			const containerWidth = marqueeRef.current.parentElement?.offsetWidth || 0;
+			const speed = CONFIG.IS_MOBILE ? 150 : 300; // pixels per second
+			const duration = (textWidth + containerWidth) / speed;
+			setAnimationDuration(duration);
+		}
+		setAnimationKey(prevKey => prevKey + 1); // Update the key to reset animation
+	}, [currentImage]);
 
 	return (
 		<>
@@ -43,41 +53,50 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 					}`}
 					alt="Current gallery image"
 				/>
-				{/* <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-					<div className="overflow-hidden w-full absolute bottom-0">
-						<span
+				<div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+					<div
+						className="overflow-hidden flex w-full absolute bottom-0"
+						style={{
+							justifyContent: "end",
+							width: "100%",
+						}}
+					>
+						<div
 							id="image-description"
-							key={animationKey}
-							className="mix-blend-difference indent-10 border-[1vh] border-white text-[5vh] font-extrabold uppercase tracking-wider inline-block box-shadow-md"
+							key={animationKey} // Use the key to reset animation
+							ref={marqueeRef}
+							className="flex uppercase w-max mix-blend-difference border-[1vh] border-white text-[5vh] font-extrabold"
+							// className="flex w-max mix-blend-difference padd-10 border-[1vh] border-white text-[5vh] font-extrabold uppercase tracking-wider inline-block box-shadow-md"
 							style={{
-								lineHeight: "1",
-								textShadow: "0 0 1vh rgba(255,255,255,0.5)",
+								// textShadow: "0 0 1vh rgba(0,0,0,0.5)",
+								padding: "0 2vh",
 								whiteSpace: "nowrap",
-								// animation: `textSlide 15s linear infinite`, // Set a fixed duration
-								animation: `textSlide ${currentImage?.comment?.length * 0.2}s linear infinite`,
+								animation: `marquee-move-text ${animationDuration}s linear infinite`,
 							}}
 						>
-							{currentImage?.comment || "No description available"}
-						</span>
+							<div className="marquee-content">
+								{currentImage?.comment || "No description available"}
+							</div>
+						</div>
 					</div>
 				</div>
 				<style jsx>{`
-					@keyframes textSlide {
+					@keyframes marquee-move-text {
 						0% {
-							transform: translateX(100vw);
+							transform: translateX(100%);
 						}
 						100% {
-							transform: translateX(-100vw);
+							transform: translateX(-100%);
 						}
 					}
-				`}</style> 
+				`}</style>
 				<div
 					className="absolute inset-0"
 					style={{
 						mixBlendMode: "difference",
 					}}
 				></div>
-				*/}
+
 				<img
 					ref={nextImageRef}
 					className="absolute !h-screen object-cover transition-all duration-500 ease-in-out opacity-0"

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +19,10 @@
 body {
 	color: var(--foreground);
 	background: var(--background);
-	font-family: Arial, Helvetica, sans-serif;
+	/* font-family: Arial, Helvetica, sans-serif; */
+	font-size: 25vmin;
+	font-weight: 900;
+	font-family: "Montserrat", sans-serif;
 }
 
 @layer utilities {
@@ -31,7 +35,8 @@ body {
 	max-height: 100vh;
 }
 
-.gallery img {
+/* disabled */
+.gallery__X img {
 	width: auto;
 	height: auto;
 	object-fit: cover;
@@ -42,10 +47,18 @@ body {
 	box-sizing: unset;
 }
 
-img {
-	display: none;
+.my-masonry-grid {
+	display: flex;
+	margin-left: -20px; /* gutter size offset */
+	width: auto;
 }
 
-img[src] {
-	display: block;
+.my-masonry-grid_column {
+	padding-left: 20px; /* gutter size */
+	background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+	margin-bottom: 20px;
 }
