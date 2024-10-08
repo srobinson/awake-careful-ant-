@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 interface ImageDisplayProps {
 	currentBackgroundRef: React.RefObject<HTMLDivElement>;
@@ -15,13 +15,13 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 	currentImageRef,
 	nextImageRef,
 	isInitialLoad,
-	currentImage, // Add this line
+	// currentImage, // Add this line
 }) => {
-	const [animationKey, setAnimationKey] = useState(0);
+	// const [animationKey, setAnimationKey] = useState(0);
 
-	useEffect(() => {
-		setAnimationKey(prevKey => prevKey + 1);
-	}, [currentImage]);
+	// useEffect(() => {
+	// 	setAnimationKey(prevKey => prevKey + 1);
+	// }, [currentImage]);
 
 	return (
 		<>
@@ -70,13 +70,14 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 							transform: translateX(-100vw);
 						}
 					}
-				`}</style> */}
+				`}</style> 
 				<div
 					className="absolute inset-0"
 					style={{
 						mixBlendMode: "difference",
 					}}
 				></div>
+				*/}
 				<img
 					ref={nextImageRef}
 					className="absolute !h-screen object-cover transition-all duration-500 ease-in-out opacity-0"
