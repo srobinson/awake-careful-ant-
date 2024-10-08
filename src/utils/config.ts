@@ -6,7 +6,7 @@ function isMobile() {
 
 export const CONFIG = {
 	// Start the transitioning on page load
-	AUTO_START: false,
+	AUTO_START: true,
 
 	IS_MOBILE: isMobile(),
 

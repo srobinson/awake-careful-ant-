@@ -45,7 +45,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 				ref={nextBackgroundRef}
 				className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out opacity-0"
 			></div>
-			<div className="relative z-10 w-full h-full flex justify-center items-center overflow-hidden">
+			<div className="relative z-10 w-full h-full flex justify-center items-center">
 				<img
 					ref={currentImageRef}
 					className={`gallery-image gallery-image-current absolute !h-screen object-cover transition-all duration-500 ease-in-out ${
@@ -53,30 +53,27 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 					}`}
 					alt="Current gallery image"
 				/>
-				<div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+				<div
+					className={`overflow-hidden flex w-full absolute ${
+						CONFIG.IS_MOBILE ? "bottom-14" : "bottom-0"
+					}`}
+					style={{
+						justifyContent: "end",
+						width: "100%",
+					}}
+				>
 					<div
-						className="overflow-hidden flex w-full absolute bottom-0"
+						key={animationKey} // Use the key to reset animation
+						ref={marqueeRef}
+						className="flex uppercase w-max mix-blend-difference border-[1vh] border-white text-[5vh] font-extrabold"
 						style={{
-							justifyContent: "end",
-							width: "100%",
+							padding: "0 2vh",
+							whiteSpace: "nowrap",
+							animation: `marquee-move-text ${animationDuration}s linear infinite`,
 						}}
 					>
-						<div
-							id="image-description"
-							key={animationKey} // Use the key to reset animation
-							ref={marqueeRef}
-							className="flex uppercase w-max mix-blend-difference border-[1vh] border-white text-[5vh] font-extrabold"
-							// className="flex w-max mix-blend-difference padd-10 border-[1vh] border-white text-[5vh] font-extrabold uppercase tracking-wider inline-block box-shadow-md"
-							style={{
-								// textShadow: "0 0 1vh rgba(0,0,0,0.5)",
-								padding: "0 2vh",
-								whiteSpace: "nowrap",
-								animation: `marquee-move-text ${animationDuration}s linear infinite`,
-							}}
-						>
-							<div className="marquee-content">
-								{currentImage?.comment || "No description available"}
-							</div>
+						<div className="marquee-content">
+							{currentImage?.comment || "No description available"}
 						</div>
 					</div>
 				</div>
@@ -90,12 +87,6 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 						}
 					}
 				`}</style>
-				<div
-					className="absolute inset-0"
-					style={{
-						mixBlendMode: "difference",
-					}}
-				></div>
 
 				<img
 					ref={nextImageRef}
