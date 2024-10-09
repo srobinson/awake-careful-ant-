@@ -7,6 +7,7 @@ interface ImageDisplayProps {
 	currentImageRef: React.RefObject<HTMLImageElement>;
 	nextImageRef: React.RefObject<HTMLImageElement>;
 	isInitialLoad: boolean;
+	isFullscreen: boolean;
 	currentImage: any | null;
 }
 
@@ -16,6 +17,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 	currentImageRef,
 	nextImageRef,
 	isInitialLoad,
+	isFullscreen,
 	currentImage,
 }) => {
 	const [animationDuration, setAnimationDuration] = useState(15);
@@ -55,7 +57,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 				/>
 				<div
 					className={`overflow-hidden flex w-full absolute ${
-						CONFIG.IS_MOBILE ? "bottom-14" : "bottom-0"
+						CONFIG.IS_MOBILE && !isFullscreen ? "bottom-24" : "bottom-0"
 					}`}
 					style={{
 						justifyContent: "end",

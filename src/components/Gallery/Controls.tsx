@@ -142,7 +142,7 @@ const Controls: React.FC<ControlsProps> = ({
 			)}
 			<button
 				onClick={toggleFullscreen}
-				className={`hidden sm:block p-1.5 bg-gray-800 bg-opacity-70 rounded hover:bg-opacity-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-transparent
+				className={`sm:block p-1.5 bg-gray-800 bg-opacity-70 rounded hover:bg-opacity-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-transparent
         ${controlsState.isFullscreen ? "border-2 border-white" : "border-2 border-transparent"}`}
 			>
 				{/* Fullscreen icon */}

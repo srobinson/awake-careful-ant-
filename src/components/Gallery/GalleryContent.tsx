@@ -164,10 +164,8 @@ const Gallery: React.FC = () => {
 				togglePause();
 			}
 			setTimeout(() => {
-				console.log("toggleControls");
-
 				toggleControls();
-			}, 1000);
+			}, 2000);
 		}
 	}, [isLoading, isInitialLoad, startProgress, togglePause]);
 
@@ -344,6 +342,7 @@ const Gallery: React.FC = () => {
 				currentImageRef={currentImageRef}
 				nextImageRef={nextImageRef}
 				isInitialLoad={isInitialLoad}
+				isFullscreen={controlsState.isFullscreen}
 				currentImage={state.currentImage}
 			/>
 

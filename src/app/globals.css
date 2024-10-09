@@ -16,6 +16,12 @@
 	}
 }
 
+html,
+body {
+	overflow: hidden;
+	height: 100vh;
+}
+
 body {
 	color: var(--foreground);
 	background: var(--background);
@@ -23,6 +29,7 @@ body {
 	font-size: 25vmin;
 	font-weight: 900;
 	font-family: "Montserrat", sans-serif;
+	overflow: hidden;
 }
 
 @layer utilities {
