@@ -54,7 +54,9 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 					alt="Current gallery image"
 				/>
 				<div
-					className={"overflow-hidden flex w-full fixed bottom-0"}
+					className={
+						"overflow-hidden flex w-full fixed bottom-0 mix-blend-difference"
+					}
 					style={{
 						justifyContent: "end",
 						width: "100%",
@@ -63,7 +65,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 					<div
 						key={animationKey} // Use the key to reset animation
 						ref={marqueeRef}
-						className="flex uppercase w-max mix-blend-difference border-[1vh] border-white text-[5vh] font-extrabold"
+						className="flex uppercase w-max border-[1vh] border-white text-[5vh] font-extrabold"
 						style={{
 							padding: "0 2vh",
 							whiteSpace: "nowrap",
