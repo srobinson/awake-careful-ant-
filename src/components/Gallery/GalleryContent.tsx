@@ -342,7 +342,6 @@ const Gallery: React.FC = () => {
 				currentImageRef={currentImageRef}
 				nextImageRef={nextImageRef}
 				isInitialLoad={isInitialLoad}
-				isFullscreen={controlsState.isFullscreen}
 				currentImage={state.currentImage}
 			/>
 
