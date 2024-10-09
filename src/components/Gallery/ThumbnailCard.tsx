@@ -81,7 +81,7 @@ const ThumbnailCard: React.FC<ThumbnailCardProps> = ({
 			/>
 			{isMarkedForDeletion && (
 				<div className="absolute inset-0 bg-red-500 bg-opacity-50 flex items-center justify-center">
-					<span className="text-white font-bold">Marked for Deletion</span>
+					<span className="text-white text-sm font-bold">=X=</span>
 				</div>
 			)}
 			<div
