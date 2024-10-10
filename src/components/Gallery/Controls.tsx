@@ -70,7 +70,9 @@ const Controls: React.FC<ControlsProps> = ({
 	return (
 		<div
 			className={`controls-container fixed top-4 right-4 flex space-x-2 z-[16000] bg-gray-900 bg-opacity-50 rounded-lg p-1 transition-opacity duration-300 ${
-				controlsState.isControlsVisible ? "opacity-100" : "opacity-0"
+				controlsState.isControlsVisible
+					? "opacity-100"
+					: "opacity-0 pointer-events-none"
 			}`}
 		>
 			{CONFIG.MARK_CONTROLS_ENABLED && !controlsState.isThumbnailViewActive && (
