@@ -66,6 +66,7 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 			className="fixed inset-0 bg-black bg-opacity-90 z-50 overflow-y-auto p-4"
 		>
 			<div className="container mx-auto">
+				{/* TODO: USE COLUMNS https://www.youtube.com/watch?v=x1qlKvJdHzI&ab_channel=LunDev  */}
 				<Masonry
 					breakpointCols={breakpointColumnsObj}
 					className="my-masonry-grid"

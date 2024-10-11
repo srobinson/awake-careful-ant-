@@ -65,15 +65,23 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 					<div
 						key={animationKey} // Use the key to reset animation
 						ref={marqueeRef}
-						className="flex uppercase w-max border-[1vh] border-white text-[5vh] font-extrabold"
+						className="flex uppercase w-max border-[1vh] text-[5vh] font-extrabold text-white"
 						style={{
-							padding: "0 2vh",
+							padding: "0 2vh 0 0",
 							whiteSpace: "nowrap",
 							animation: `marquee-move-text ${animationDuration}s linear infinite`,
 						}}
 					>
 						<div className="marquee-content">
-							{currentImage?.comment || "No description available"}
+							<span
+								className="inline-block mr-4 px-8 bg-black text-white border-r-10"
+								style={{
+									borderRight: "1vh solid white",
+								}}
+							>
+								{currentImage?.author || "johndoe"}
+							</span>
+							<span>{currentImage?.comment || "No description available"}</span>
 						</div>
 					</div>
 				</div>
