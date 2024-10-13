@@ -43,7 +43,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
 			></div>
 			<div
 				ref={nextBackgroundRef}
-				className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out opacity-0"
+				className="absolute inset-10 bg-cover bg-center transition-all duration-500 ease-in-out opacity-0"
 			></div>
 			<div className="relative z-10 w-full h-full flex justify-center items-center">
 				<img

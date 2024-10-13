@@ -84,11 +84,11 @@ export const useImageManager = () => {
 		if (!currentImageRef.current || !currentBackgroundRef.current) return;
 
 		currentImageRef.current.style.transform =
-			direction === "next" ? "translateX(50px)" : "translateX(-100px)";
+			direction === "next" ? "translateX(100px)" : "translateX(-100px)";
 		currentImageRef.current.style.opacity = "0";
 		currentBackgroundRef.current.style.transform =
 			direction === "next"
-				? "translateX(200px) scale(1.61)"
+				? "translateX(200px) scale(1.01)"
 				: "translateX(-200px) scale(1.01)";
 		currentBackgroundRef.current.style.opacity = "0";
 	};
