@@ -3,7 +3,7 @@
 "use client";
 
 import { useGalleryData } from "@/hooks/useGalleryData";
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import Masonry from "react-masonry-css";
 import ThumbnailCard from "./Gallery/ThumbnailCard";
 
@@ -51,6 +51,20 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 		[hasMore, isLoading, onLoadMore]
 	);
 
+	useEffect(() => {
+		if (scrollRef.current && isVisible) {
+			const currentThumbnail = scrollRef.current.querySelector(
+				`[data-index="${currentIndex}"]`
+			);
+			if (currentThumbnail) {
+				currentThumbnail.scrollIntoView({
+					behavior: "smooth",
+					block: "center",
+				});
+			}
+		}
+	}, [currentIndex, isVisible]);
+
 	if (!isVisible || !galleryData) return null;
 
 	const breakpointColumnsObj = {
@@ -75,6 +89,7 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 					{items.map((index, arrayIndex) => (
 						<div
 							key={index}
+							data-index={index} // Add this line
 							ref={arrayIndex === items.length - 1 ? lastItemRef : null}
 						>
 							<ThumbnailCard
@@ -94,7 +109,7 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 							/>
 						</div>
 					))}
-				</Masonry>
+				</Masonry>{" "}
 			</div>
 			{isLoading && (
 				<div className="text-center py-4">
