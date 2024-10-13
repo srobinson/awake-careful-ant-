@@ -42,6 +42,7 @@ export const useGalleryData = () => {
 		const loadGalleryData = async () => {
 			try {
 				const data = await fetchGalleryData();
+				// data.images = shuffleArray(data.images);
 				setGalleryData(data);
 			} catch (err) {
 				setError("Error fetching gallery data");
