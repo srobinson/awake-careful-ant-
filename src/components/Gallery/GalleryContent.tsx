@@ -163,9 +163,6 @@ const Gallery: React.FC = () => {
 				startProgress();
 				togglePause();
 			}
-			setTimeout(() => {
-				toggleControls();
-			}, 2000);
 		}
 	}, [isLoading, isInitialLoad, startProgress, togglePause]);
 

@@ -50,7 +50,7 @@ export const useControlsManager = () => {
 	const toggleThumbnailView = useCallback(() => {
 		setControlsState(prev => {
 			const newThumbnailViewState = !prev.isThumbnailViewActive;
-			dispatch({ payload: newThumbnailViewState, type: "SET_PAUSED" });
+			dispatch({ payload: true, type: "SET_PAUSED" });
 			return { ...prev, isThumbnailViewActive: newThumbnailViewState };
 		});
 	}, [dispatch]);
