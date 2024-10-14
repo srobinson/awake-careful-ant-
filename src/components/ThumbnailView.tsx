@@ -3,7 +3,7 @@
 "use client";
 
 import { useGalleryData } from "@/hooks/useGalleryData";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import Masonry from "react-masonry-css";
 import ThumbnailCard from "./Gallery/ThumbnailCard";
 
@@ -51,21 +51,22 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 		[hasMore, isLoading, onLoadMore]
 	);
 
-	useEffect(() => {
-		if (scrollRef.current && isVisible) {
-			setTimeout(() => {
-				const currentThumbnail = scrollRef?.current?.querySelector(
-					`[data-index="${currentIndex}"]`
-				);
-				if (currentThumbnail) {
-					currentThumbnail.scrollIntoView({
-						behavior: "instant",
-						block: "center",
-					});
-				}
-			}, 500);
-		}
-	}, [currentIndex, isVisible]);
+	// TODO: revisit implementation
+	// useEffect(() => {
+	// 	if (scrollRef.current && isVisible) {
+	// 		setTimeout(() => {
+	// 			const currentThumbnail = scrollRef?.current?.querySelector(
+	// 				`[data-index="${currentIndex}"]`
+	// 			);
+	// 			if (currentThumbnail) {
+	// 				currentThumbnail.scrollIntoView({
+	// 					behavior: "instant",
+	// 					block: "center",
+	// 				});
+	// 			}
+	// 		}, 1000);
+	// 	}
+	// }, [currentIndex, isVisible]);
 
 	if (!isVisible || !galleryData) return null;
 
