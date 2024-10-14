@@ -293,9 +293,6 @@ const Gallery: React.FC = () => {
 			updateImage(index, index > currentIndex ? "next" : "prev");
 			resetProgress();
 			closeThumbnailView();
-			setTimeout(() => {
-				toggleControls();
-			}, 2000);
 		},
 		[closeThumbnailView, currentIndex, updateImage, resetProgress]
 	);

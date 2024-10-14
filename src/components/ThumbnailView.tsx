@@ -53,15 +53,17 @@ const ThumbnailView: React.FC<ThumbnailViewProps> = ({
 
 	useEffect(() => {
 		if (scrollRef.current && isVisible) {
-			const currentThumbnail = scrollRef.current.querySelector(
-				`[data-index="${currentIndex}"]`
-			);
-			if (currentThumbnail) {
-				currentThumbnail.scrollIntoView({
-					behavior: "smooth",
-					block: "center",
-				});
-			}
+			setTimeout(() => {
+				const currentThumbnail = scrollRef?.current?.querySelector(
+					`[data-index="${currentIndex}"]`
+				);
+				if (currentThumbnail) {
+					currentThumbnail.scrollIntoView({
+						behavior: "instant",
+						block: "center",
+					});
+				}
+			}, 500);
 		}
 	}, [currentIndex, isVisible]);
 
